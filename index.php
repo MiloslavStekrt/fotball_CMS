@@ -14,7 +14,7 @@
         </form>
     </section>
     <section class="start_turnament">
-        <form action="newTurnament.php" method="post">
+        <form action="zapas/" method="POST">
             <input type="text" placeholder="Jmeno zapasu" id="name" name="name">
             <input type="submit" value="Zacit Zapas">
         </form>
