@@ -8,3 +8,4 @@ if($server->query($sql) === TRUE){
 }else{
     echo "Error in " . $sql . "<br/>" . $server->error;
 }
+$server -> close;
