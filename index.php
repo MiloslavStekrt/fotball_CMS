@@ -20,5 +20,8 @@
         </form>
     </section>
     <button><h1>Statistiky</h1></button>
+    <section class="statistiky">
+        <?php include 'statistika.php'?>
+    </section>
 </body>
 </html>

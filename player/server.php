@@ -1,4 +1,3 @@
-
 <?php 
 $server = new mysqli('localhost:3306', 'db_controller', 'root', 'TEST1');
 $sql = "INSERT INTO `Hraci`(`Jmeno`, `dress`, `bodu`, `golu`, `assistenci`, `tresty`) VALUES ('".$_POST["jmeno"]."','".$_POST["dress"]."',0,0,0,0)";

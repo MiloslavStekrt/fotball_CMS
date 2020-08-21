@@ -1,31 +1,28 @@
 <?php
+// server je tam kam se pripojuji localhost:3306 je defaultni db_controller je jmeno uzivatele a root je heslo 
+// TEST1 je jmeno Database ke ktere se pripojuji
 $server = new mysqli('localhost:3306', 'db_controller', 'root', 'TEST1');
 $sql = "INSERT INTO `Zapasi`(jmeno) VALUES('".$_POST["name"]."')";
 
+// provede zapis do TEST1.zapasi
 if($server -> query($sql) === TRUE){
     echo 'Zapas vytvoren';
 }else{
     echo "Err ".$sql."<br/>".$server->error;
 }
-$sqlv1 = "SELECT * FROM `Zapasi` WHERE 1";
 
-$zapas = $server -> query($sqlv1);
-if($zapas->num_rows > 0){
+$sql1 = "SELECT * FROM `Zapasi`";
+$res = $server->query($sql1);
+
+if ($res->num_rows > 0) {
     echo "<ul>";
-    while($row = $zapas->fetch_assoc){
-        echo "<li>".$row['id']." ".$row['jmeno']."</li>";
+    while($r = $res->fetch_assoc()) {
+        echo " <li><button>Zapas: ".$r["jmeno"]."<br></button></li>";
     }
-    echo '</ul>';
-}else{
-    echo 'Tak a zase to nefunguje nu coz. ';
+    echo "</ul>";
+} else {
+  echo "Nejsou zadne zapasi";
 }
-
-$ids = $server -> query($sqlv1);
-
-$last_id = max($ids);
-echo $last_id;
-if($server -> query($sqlv1) == FALSE){
-    echo "Error ty idiote koukni sem mozna ho taky uvidis: <br/>";
-    echo $sqlv1.$server->error;
-}
+// do promene zapas se ulozili data, ktere vypise program po odeslani query codu
+$sql = "SELECT * FROM `Zapasi`";
 $server -> close;
